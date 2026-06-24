@@ -1,0 +1,15 @@
+{
+    "agents": [
+        "claude_code"
+    ],
+    "cloud": false,
+    "packages": [
+        "livewire/blaze"
+    ],
+    "skills": [
+        "laravel-best-practices",
+        "livewire-development",
+        "tailwindcss-development",
+        "blaze-optimize"
+    ]
+}

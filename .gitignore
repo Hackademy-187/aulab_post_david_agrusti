@@ -1,0 +1,71 @@
+# ========================
+# Laravel
+# ========================
+/bootstrap/cache/*.php
+/storage/*.key
+/storage/pail
+/public/hot
+/public/storage
+
+# ========================
+# Dipendenze
+# ========================
+/vendor
+/node_modules
+
+# ========================
+# Environment
+# ========================
+.env
+.env.backup
+.env.production
+.env.staging
+.env.local
+
+# ========================
+# Build (Vite)
+# ========================
+/public/build
+/public/fonts-manifest.dev.json
+
+# ========================
+# IDE / Editor
+# ========================
+/.fleet
+/.idea
+/.nova
+/.vscode
+/.zed
+/.claude
+*.sublime-project
+*.sublime-workspace
+
+# ========================
+# OS
+# ========================
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# ========================
+# Cache & Log
+# ========================
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# ========================
+# Testing
+# ========================
+/.phpunit.cache
+.phpunit.result.cache
+/coverage
+
+# ========================
+# Misc
+# ========================
+Homestead.json
+Homestead.yaml
+/auth.json
+.phpactor.json
