@@ -6,10 +6,11 @@
     @vite(['resources/css/app.css', 'resources/js/app.js'])
     <title>The Aulab Post</title>
 </head>
-<body>
+<body class="d-flex flex-column min-vh-100">
     <x-navbar />
-    <div class="min-vh-100">
+    <div class="flex-grow-1">
         {{ $slot }}
     </div>
+    <x-footer />
 </body>
 </html>
