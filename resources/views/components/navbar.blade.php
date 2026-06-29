@@ -9,6 +9,11 @@
         <li class="nav-item">
           <a class="nav-link active" aria-current="page" href="{{ route('homepage') }}">Home</a>
         </li>
+        @auth
+          <li class="nav-item">
+            <a class="nav-link" href="{{ route('article.create') }}">Crea Articolo</a>
+          </li>
+        @endauth
       </ul>
       
       <ul class="navbar-nav ms-auto mb-2 mb-lg-0 align-items-center">
