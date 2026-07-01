@@ -1,15 +1,43 @@
-<footer class="navbar-custom text-center text-lg-start py-3 mt-auto">
-  <div class="container d-flex flex-wrap justify-content-between align-items-center">
-    <p class="col-md-4 mb-0 text-white-50">&copy; {{ date('Y') }} The Aulab Post</p>
+<footer class="navbar-custom text-white pt-5 pb-4 mt-auto border-top border-secondary border-opacity-25">
+    <div class="container text-center text-md-start">
+        <div class="row text-center text-md-start">
+            
+            <div class="col-md-4 col-lg-4 col-xl-4 mx-auto mt-3">
+                <h5 class="text-uppercase mb-4 fw-bold font-playfair text-white">The Aulab Post</h5>
+                <p class="text-white-50">
+                    Il tuo portale di informazione tech. Resta aggiornato sulle ultime novità, tutorial e trend del mondo dello sviluppo software.
+                </p>
+            </div>
 
-    <a href="{{ route('homepage') }}" class="col-md-4 d-flex align-items-center justify-content-center mb-3 mb-md-0 me-md-auto link-light text-decoration-none">
-      <span class="fs-5 fw-bold font-playfair text-white">The Aulab Post</span>
-    </a>
+            <div class="col-md-3 col-lg-2 col-xl-2 mx-auto mt-3">
+                <h5 class="text-uppercase mb-4 fw-bold text-white fs-6">Esplora</h5>
+                <p>
+                    <a href="{{ route('homepage') }}" class="text-white-50 text-decoration-none hover-white">Home</a>
+                </p>
+                <p>
+                    <a href="{{ route('article.index') }}" class="text-white-50 text-decoration-none hover-white">Tutti gli Articoli</a>
+                </p>
+            </div>
 
-    <ul class="nav col-md-4 justify-content-end">
-      <li class="nav-item"><a href="{{ route('homepage') }}" class="nav-link px-2 text-white-50 hover-white">Home</a></li>
-      <li class="nav-item"><a href="#" class="nav-link px-2 text-white-50 hover-white">Articoli</a></li>
-      <li class="nav-item"><a href="#" class="nav-link px-2 text-white-50 hover-white">Contatti</a></li>
-    </ul>
-  </div>
+            <div class="col-md-4 col-lg-3 col-xl-3 mx-auto mt-3">
+                <h5 class="text-uppercase mb-4 fw-bold text-white fs-6">Collabora con noi</h5>
+                <p class="text-white-50 mb-4 small">
+                    Vuoi entrare a far parte della nostra redazione? Scopri i ruoli disponibili.
+                </p>
+                <a href="{{ route('careers') }}" class="btn btn-outline-light rounded-pill px-4 fw-bold btn-sm">Lavora con noi</a>
+            </div>
+
+        </div>
+
+        <hr class="mb-4 mt-5 text-white-50 opacity-25">
+
+        <div class="row align-items-center">
+            <div class="col-md-12 text-center">
+                <p class="text-white-50 mb-0 small">
+                    &copy; {{ date('Y') }} Tutti i diritti riservati - 
+                    <strong class="text-white font-playfair">The Aulab Post</strong>
+                </p>
+            </div>
+        </div>
+    </div>
 </footer>

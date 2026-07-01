@@ -36,6 +36,12 @@
             </a>
             <ul class="dropdown-menu dropdown-menu-end shadow border-0">
               <li><a class="dropdown-item" href="#">Il mio Profilo</a></li>
+              @if (Auth::user()->is_admin)
+                  <li><a class="dropdown-item" href="{{ route('admin.dashboard') }}">Dashboard Admin</a></li>
+              @endif
+              @if (Auth::user()->is_revisor)
+                  <li><a class="dropdown-item" href="{{ route('revisor.dashboard') }}">Dashboard Revisore</a></li>
+              @endif
               <li><hr class="dropdown-divider"></li>
               <li>
                 <form id="logout-form" action="/logout" method="POST" class="d-none">

@@ -22,10 +22,18 @@ use Illuminate\Support\Str;
  * @property Carbon|null $created_at
  * @property Carbon|null $updated_at
  */
-#[Fillable(['name', 'email', 'password'])]
+#[Fillable(['name', 'email', 'password', 'is_admin', 'is_revisor', 'is_writer'])]
 #[Hidden(['password', 'remember_token'])]
 class User extends Authenticatable
 {
+    protected $fillable = [
+        'name',
+        'email',
+        'password',
+        'is_admin',
+        'is_revisor',
+        'is_writer',
+    ];
     /** @use HasFactory<UserFactory> */
     use HasFactory, Notifiable;
 

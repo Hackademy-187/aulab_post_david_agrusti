@@ -8,6 +8,15 @@
                 <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
             </div>
         @endif
+        
+        @if (session('alert'))
+            <div class="alert alert-danger alert-dismissible fade show d-flex align-items-center mt-3 shadow-sm" role="alert">
+                <div>
+                    <strong>Attenzione!</strong> {{ session('alert') }}
+                </div>
+                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+            </div>
+        @endif
         <div class="row p-4 pb-0 pe-lg-0 pt-lg-5 align-items-center rounded-3 border shadow-lg bg-white">
             <div class="col-lg-7 p-3 p-lg-5 pt-lg-3">
                 <h1 class="display-4 fw-bold lh-1 text-primary">Benvenuto su The Aulab Post</h1>

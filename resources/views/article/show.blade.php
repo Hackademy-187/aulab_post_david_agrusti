@@ -19,6 +19,25 @@
 
                 <div class="fs-5 lh-lg mb-5 text-body" style="white-space: pre-wrap;">{{ $article->body }}</div>
                 
+                @if (Auth::user() && Auth::user()->is_revisor)
+                    <div class="d-flex justify-content-center gap-3 mb-5 border-top pt-4">
+                        <form action="{{ route('revisor.acceptArticle', compact('article')) }}" method="POST">
+                            @csrf
+                            @method('PATCH')
+                            <button class="btn btn-success rounded-pill px-4 shadow-sm fw-bold">
+                                <i class="bi bi-check-circle me-2"></i>Accetta Articolo
+                            </button>
+                        </form>
+                        <form action="{{ route('revisor.rejectArticle', compact('article')) }}" method="POST">
+                            @csrf
+                            @method('PATCH')
+                            <button class="btn btn-danger rounded-pill px-4 shadow-sm fw-bold">
+                                <i class="bi bi-x-circle me-2"></i>Rifiuta Articolo
+                            </button>
+                        </form>
+                    </div>
+                @endif
+                
                 <div class="text-center mt-5">
                     <a href="{{ route('article.index') }}" class="btn btn-outline-secondary px-5 py-2 fw-bold">Torna agli articoli</a>
                 </div>
