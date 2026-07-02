@@ -15,7 +15,7 @@ class ArticleController extends Controller implements HasMiddleware
     public static function middleware(): array
     {
         return [
-            new Middleware('auth', except: ['index', 'show', 'byCategory', 'byUser']),
+            new Middleware('auth', except: ['index', 'show', 'byCategory', 'byUser', 'articleSearch']),
         ];
     }
 
@@ -81,6 +81,15 @@ class ArticleController extends Controller implements HasMiddleware
         return view('article.by-user', compact('articles', 'user'));
     }
 
+    public function articleSearch(Request $request)
+    {
+        $query = $request->input('query');
+        $articles = Article::search($query)->query(function ($builder) {
+            $builder->where('is_accepted', true)->orderBy('created_at', 'desc');
+        })->get();
+        return view('article.search-index', compact('articles', 'query'));
+    }
+
     /**
      * Show the form for editing the specified resource.
      */
@@ -102,6 +111,11 @@ class ArticleController extends Controller implements HasMiddleware
      */
     public function destroy(Article $article)
     {
-        //
+        if (Auth::user()->id !== $article->user_id && !Auth::user()->is_admin) {
+            abort(403, 'Azione non autorizzata.');
+        }
+        
+        $article->delete();
+        return redirect()->route('article.index')->with('message', 'Articolo eliminato con successo.');
     }
 }

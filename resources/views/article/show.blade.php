@@ -19,7 +19,7 @@
 
                 <div class="fs-5 lh-lg mb-5 text-body" style="white-space: pre-wrap;">{{ $article->body }}</div>
                 
-                @if (Auth::user() && Auth::user()->is_revisor)
+                @if (Auth::user() && Auth::user()->is_revisor && is_null($article->is_accepted))
                     <div class="d-flex justify-content-center gap-3 mb-5 border-top pt-4">
                         <form action="{{ route('revisor.acceptArticle', compact('article')) }}" method="POST">
                             @csrf
@@ -33,6 +33,30 @@
                             @method('PATCH')
                             <button class="btn btn-danger rounded-pill px-4 shadow-sm fw-bold">
                                 <i class="bi bi-x-circle me-2"></i>Rifiuta Articolo
+                            </button>
+                        </form>
+                    </div>
+                @endif
+                
+                @if (Auth::user() && Auth::user()->is_revisor && !is_null($article->is_accepted))
+                    <div class="d-flex justify-content-center mb-5 border-top pt-4">
+                        <form action="{{ route('revisor.undoArticle', compact('article')) }}" method="POST">
+                            @csrf
+                            @method('PATCH')
+                            <button class="btn btn-warning rounded-pill px-4 shadow-sm fw-bold text-dark">
+                                <i class="bi bi-arrow-counterclockwise me-2"></i>Riporta in revisione
+                            </button>
+                        </form>
+                    </div>
+                @endif
+                
+                @if (Auth::user() && Auth::user()->id == $article->user_id)
+                    <div class="d-flex justify-content-center mb-5 border-top pt-4">
+                        <form action="{{ route('article.destroy', compact('article')) }}" method="POST" onsubmit="return confirm('Sei sicuro di voler eliminare definitivamente questo articolo? L\'azione è irreversibile.');">
+                            @csrf
+                            @method('DELETE')
+                            <button type="submit" class="btn btn-outline-danger rounded-pill px-4 shadow-sm fw-bold">
+                                <i class="bi bi-trash3-fill me-2"></i>Elimina Articolo
                             </button>
                         </form>
                     </div>

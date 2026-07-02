@@ -69,3 +69,5 @@ Homestead.json
 Homestead.yaml
 /auth.json
 .phpactor.json
+
+/storage/*.index

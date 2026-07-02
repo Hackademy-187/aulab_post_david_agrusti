@@ -19,6 +19,12 @@
         @endauth
       </ul>
       
+      <!-- Search Form -->
+      <form action="{{ route('article.search') }}" method="GET" class="d-flex me-auto ms-lg-3 my-2 my-lg-0" role="search">
+          <input class="form-control rounded-pill me-2" type="search" name="query" placeholder="Cerca articoli..." aria-label="Search">
+          <button class="btn btn-outline-primary rounded-pill px-3" type="submit">Cerca</button>
+      </form>
+      
       <ul class="navbar-nav ms-auto mb-2 mb-lg-0 align-items-center">
         @guest
           <li class="nav-item">
