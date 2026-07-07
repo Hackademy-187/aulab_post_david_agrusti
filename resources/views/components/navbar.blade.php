@@ -48,6 +48,9 @@
               @if (Auth::user()->is_revisor)
                   <li><a class="dropdown-item" href="{{ route('revisor.dashboard') }}">Dashboard Revisore</a></li>
               @endif
+              @if (Auth::user()->is_writer)
+                  <li><a class="dropdown-item" href="{{ route('writer.dashboard') }}">Dashboard Redattore</a></li>
+              @endif
               <li><hr class="dropdown-divider"></li>
               <li>
                 <form id="logout-form" action="/logout" method="POST" class="d-none">

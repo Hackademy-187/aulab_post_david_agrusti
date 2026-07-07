@@ -7,6 +7,7 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', [PublicController::class, 'homepage'])->name('homepage');
 Route::get('/article/index', [ArticleController::class, 'index'])->name('article.index');
 use App\Http\Controllers\AdminController;
+use App\Http\Controllers\WriterController;
 
 Route::get('/article/show/{article}', [ArticleController::class, 'show'])->name('article.show');
 Route::get('/article/categoria/{category}', [ArticleController::class, 'byCategory'])->name('article.byCategory');
@@ -46,8 +47,11 @@ Route::middleware('revisor')->group(function () {
 });
 
 Route::middleware('writer')->group(function () {
+    Route::get('/writer/dashboard', [WriterController::class, 'dashboard'])->name('writer.dashboard');
     Route::get('/article/create', [ArticleController::class, 'create'])->name('article.create');
     Route::post('/article/store', [ArticleController::class, 'store'])->name('article.store');
+    Route::get('/article/edit/{article}', [ArticleController::class, 'edit'])->name('article.edit');
+    Route::put('/article/update/{article}', [ArticleController::class, 'update'])->name('article.update');
 });
 
 Route::delete('/article/destroy/{article}', [ArticleController::class, 'destroy'])->name('article.destroy');
