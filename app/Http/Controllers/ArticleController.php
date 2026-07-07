@@ -9,6 +9,7 @@ use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Storage;
+use Illuminate\Support\Str;
 use Illuminate\Routing\Controllers\HasMiddleware;
 use Illuminate\Routing\Controllers\Middleware;
 
@@ -59,6 +60,7 @@ class ArticleController extends Controller implements HasMiddleware
             'image' => $request->file('image')->store('images', 'public'),
             'category_id' => $request->category_id,
             'user_id' => Auth::user()->id,
+            'slug' => Str::slug($request->title),
         ]);
 
         $tags = explode(',', $request->tags);
@@ -139,6 +141,7 @@ class ArticleController extends Controller implements HasMiddleware
             'subtitle' => $request->subtitle,
             'body' => $request->body,
             'category_id' => $request->category,
+            'slug' => Str::slug($request->title),
         ]);
 
         if($request->image){

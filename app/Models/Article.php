@@ -4,6 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 use Laravel\Scout\Searchable;
+use Illuminate\Support\Str;
 
 class Article extends Model
 {
@@ -17,6 +18,7 @@ class Article extends Model
         'user_id',
         'category_id',
         'is_accepted',
+        'slug',
     ];
 
     public function user()
@@ -43,5 +45,12 @@ class Article extends Model
             'body' => $this->body,
             'category' => $this->category,
         ];
+    }
+
+    public function readDuration()
+    {
+        $totalWords = Str::wordCount($this->body);
+        $minutesToRead = round($totalWords / 200);
+        return intval($minutesToRead);
     }
 }
