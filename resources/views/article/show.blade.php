@@ -12,8 +12,17 @@
                         <p class="mb-0 fw-semibold text-accent">Redatto da <a href="{{ route('article.byUser', $article->user) }}" class="text-decoration-none text-accent">{{ $article->user->name ?? 'N/A' }}</a></p>
                         <p class="mb-0 small text-muted">il {{ $article->created_at->format('d/m/Y') }}</p>
                     </div>
-                    <div>
-                        <a href="{{ route('article.byCategory', $article->category) }}" class="text-decoration-none"><span class="badge bg-accent px-3 py-2 rounded-pill fs-6">{{ $article->category->name ?? 'Nessuna Categoria' }}</span></a>
+                    <div class="text-end">
+                        @if ($article->category)
+                            <a href="{{ route('article.byCategory', $article->category) }}" class="text-decoration-none"><span class="badge bg-accent px-3 py-2 rounded-pill fs-6">{{ $article->category->name }}</span></a>
+                        @else
+                            <span class="text-muted">Nessuna categoria</span>
+                        @endif
+                        <p class="small text-muted my-0 mt-2">
+                            @foreach ($article->tags as $tag)
+                                #{{ $tag->name }}
+                            @endforeach
+                        </p>
                     </div>
                 </div>
 

@@ -61,6 +61,18 @@
                                 @enderror
                             </div>
 
+                            <!-- Tags -->
+                            <div class="mb-3">
+                                <label for="tags" class="form-label fw-semibold">Tags</label>
+                                <input type="text" name="tags" id="tags" class="form-control @error('tags') is-invalid @enderror" value="{{ old('tags') }}" placeholder="Dividi ogni tag con una virgola">
+                                <span class="small text-muted fst-italic">Dividi ogni tag con una virgola</span>
+                                @error('tags')
+                                    <div class="invalid-feedback">
+                                        {{ $message }}
+                                    </div>
+                                @enderror
+                            </div>
+
                             <!-- Immagine -->
                             <div class="mb-3">
                                 <label for="image" class="form-label fw-semibold">Immagine Copertina</label>

@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Article;
 use App\Models\Category;
+use App\Models\Tag;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -47,6 +48,7 @@ class ArticleController extends Controller implements HasMiddleware
             'body' => 'required|min:10',
             'image' => 'required|image',
             'category_id' => 'required',
+            'tags' => 'required',
         ]);
 
         $article = Article::create([
@@ -57,6 +59,23 @@ class ArticleController extends Controller implements HasMiddleware
             'category_id' => $request->category_id,
             'user_id' => Auth::user()->id,
         ]);
+
+        $tags = explode(',', $request->tags);
+        
+        foreach ($tags as $i => $tag) {
+            $tags[$i] = trim($tag);
+        }
+
+        $newTags = [];
+
+        foreach ($tags as $tag) {
+            $newTag = Tag::updateOrCreate([
+                'name' => strtolower($tag)
+            ]);
+            $newTags[] = $newTag->id;
+        }
+
+        $article->tags()->attach($newTags);
 
         return redirect()->route('homepage')->with('message', 'Articolo creato correttamente');
     }

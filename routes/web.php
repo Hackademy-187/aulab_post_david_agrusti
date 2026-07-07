@@ -29,6 +29,13 @@ Route::middleware('admin')->group(function () {
     Route::patch('/admin/revokeAdmin/{user}', [AdminController::class, 'revokeAdmin'])->name('admin.revokeAdmin');
     Route::patch('/admin/revokeRevisor/{user}', [AdminController::class, 'revokeRevisor'])->name('admin.revokeRevisor');
     Route::patch('/admin/revokeWriter/{user}', [AdminController::class, 'revokeWriter'])->name('admin.revokeWriter');
+
+    Route::put('/admin/edit/tag/{tag}', [AdminController::class, 'editTag'])->name('admin.editTag');
+    Route::delete('/admin/delete/tag/{tag}', [AdminController::class, 'deleteTag'])->name('admin.deleteTag');
+
+    Route::put('/admin/edit/category/{category}', [AdminController::class, 'editCategory'])->name('admin.editCategory');
+    Route::delete('/admin/delete/category/{category}', [AdminController::class, 'deleteCategory'])->name('admin.deleteCategory');
+    Route::post('/admin/category/store', [AdminController::class, 'storeCategory'])->name('admin.storeCategory');
 });
 
 Route::middleware('revisor')->group(function () {

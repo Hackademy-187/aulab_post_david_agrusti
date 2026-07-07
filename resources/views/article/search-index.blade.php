@@ -29,6 +29,13 @@
                                 @endif
                             </p>
                             
+                            <p class="small text-muted my-0">
+                                @foreach ($article->tags as $tag)
+                                    #{{ $tag->name }}
+                                @endforeach
+                            </p>
+
+
                             <p class="small text-muted mb-3">
                                 Redatto da <a href="{{ route('article.byUser', $article->user) }}" class="text-decoration-none fw-semibold text-accent">{{ $article->user->name ?? 'N/A' }}</a> il {{ $article->created_at->format('d/m/Y') }}
                             </p>

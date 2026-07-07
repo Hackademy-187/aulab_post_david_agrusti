@@ -11,6 +11,7 @@ use Illuminate\Validation\Rules\Password;
 use Illuminate\Support\Facades\Schema;
 use Illuminate\Support\Facades\View;
 use App\Models\Category;
+use App\Models\Tag;
 
 class AppServiceProvider extends ServiceProvider
 {
@@ -31,6 +32,10 @@ class AppServiceProvider extends ServiceProvider
 
         if (Schema::hasTable('categories')) {
             View::share('categories', Category::all());
+        }
+
+        if (Schema::hasTable('tags')) {
+            View::share('tags', Tag::all());
         }
     }
 
